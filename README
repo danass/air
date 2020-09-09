@@ -43,7 +43,7 @@ Setup your table name
 
 let tableName = "the name of your table" 
                                                                               
-then then connect everything: 
+then connect everything: 
 
 branch(router, headers, base, "index", "the page <title>", 0)
 
