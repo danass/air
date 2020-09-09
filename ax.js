@@ -7,10 +7,10 @@ const fs = require('fs')
 
 
 let results = []
-let headers = { authorization: "Bearer " + config.dcvm.auth_key }
+
 let params = {}
 
-function axGet(baseURL, name, write = true) {
+function axGet(baseURL, headers, name, write = true) {
      //Axios get method, for Airtable records 
     return axios({
       baseURL: baseURL,
@@ -32,7 +32,7 @@ function axGet(baseURL, name, write = true) {
   })
   }
   
-  function axRoute(router, view, title) { 
+  function axRoute(router, headers, view, title) { 
       router.get('/', function(req, res, next) {
     let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + view + '.json'))
           res.render(view, { 
@@ -42,7 +42,7 @@ function axGet(baseURL, name, write = true) {
       });
   }
   
-  function axRouteId(router, view, title) { router.get('/:id', function(req, res, next) {
+  function axRouteId(router, headers, view, title) { router.get('/:id', function(req, res, next) {
       let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + view + '.json'))
       for (let result of results) {
           if (req.params.id === result.id) {
@@ -56,19 +56,19 @@ function axGet(baseURL, name, write = true) {
   }
   
   
-  function axRealtimeUpdateJson(baseURL, view, sleeptime = 20000) {
+  function axRealtimeUpdateJson(baseURL, headers, view, sleeptime = 20000) {
   setInterval(function data() {
-      axGet(baseURL, view).then(results => {return results}) 
+      axGet(baseURL, headers, view).then(results => {return results}) 
       return data;
        }(), sleeptime);    
   }
 
   
-function branch(router, base, nomid, titlehtml, id = false) {
-    axRealtimeUpdateJson(base, nomid)
-    axRoute(router, nomid, titlehtml) //arg1: view, arg2: title(html header)
+function branch(router, headers, base, nomid, titlehtml, id = false) {
+    axRealtimeUpdateJson(base, headers, nomid)
+    axRoute(router, headers, nomid, titlehtml) //arg1: view, arg2: title(html header)
     if (id === true ) {
-        axRouteId(router, nomid, titlehtml)
+        axRouteId(router, headers, nomid, titlehtml)
     }
     }
 
