@@ -13,30 +13,24 @@ Do you need a simple way to setup either a full result request, or a single id e
 
 Well, here it is, just help urself.
 
-
-
-                                                                                                                                                    
-                                                                                                    bbbbbbbb                                        
-               AAA                 iiii                              tttt                           b::::::b            lllllll                     
-              A:::A               i::::i                          ttt:::t                           b::::::b            l:::::l                     
-             A:::::A               iiii                           t:::::t                           b::::::b            l:::::l                     
-            A:::::::A                                             t:::::t                            b:::::b            l:::::l                     
-           A:::::::::A           iiiiiiirrrrr   rrrrrrrrr   ttttttt:::::ttttttt      aaaaaaaaaaaaa   b:::::bbbbbbbbb     l::::l     eeeeeeeeeeee    
-          A:::::A:::::A          i:::::ir::::rrr:::::::::r  t:::::::::::::::::t      a::::::::::::a  b::::::::::::::bb   l::::l   ee::::::::::::ee  
-         A:::::A A:::::A          i::::ir:::::::::::::::::r t:::::::::::::::::t      aaaaaaaaa:::::a b::::::::::::::::b  l::::l  e::::::eeeee:::::ee
-        A:::::A   A:::::A         i::::irr::::::rrrrr::::::rtttttt:::::::tttttt               a::::a b:::::bbbbb:::::::b l::::l e::::::e     e:::::e
-       A:::::A     A:::::A        i::::i r:::::r     r:::::r      t:::::t              aaaaaaa:::::a b:::::b    b::::::b l::::l e:::::::eeeee::::::e
-      A:::::AAAAAAAAA:::::A       i::::i r:::::r     rrrrrrr      t:::::t            aa::::::::::::a b:::::b     b:::::b l::::l e:::::::::::::::::e 
-     A:::::::::::::::::::::A      i::::i r:::::r                  t:::::t           a::::aaaa::::::a b:::::b     b:::::b l::::l e::::::eeeeeeeeeee  
-    A:::::AAAAAAAAAAAAA:::::A     i::::i r:::::r                  t:::::t    tttttta::::a    a:::::a b:::::b     b:::::b l::::l e:::::::e           
-   A:::::A             A:::::A   i::::::ir:::::r                  t::::::tttt:::::ta::::a    a:::::a b:::::bbbbbb::::::bl::::::le::::::::e          
-  A:::::A               A:::::A  i::::::ir:::::r                  tt::::::::::::::ta:::::aaaa::::::a b::::::::::::::::b l::::::l e::::::::eeeeeeee  
- A:::::A                 A:::::A i::::::ir:::::r                    tt:::::::::::tt a::::::::::aa:::ab:::::::::::::::b  l::::::l  ee:::::::::::::e  
-AAAAAAA                   AAAAAAAiiiiiiiirrrrrrr                      ttttttttttt    aaaaaaaaaa  aaaabbbbbbbbbbbbbbbb   llllllll    eeeeeeeeeeeeee  
-                                                                                                                                                    
-                                                                                                                                                    
-                                                                                                                                                    
-                                                                                                                                                    
+                    iiii                     
+                   i::::i                    
+                    iiii                     
+                                             
+  aaaaaaaaaaaaa   iiiiiiirrrrr   rrrrrrrrr   
+  a::::::::::::a  i:::::ir::::rrr:::::::::r  
+  aaaaaaaaa:::::a  i::::ir:::::::::::::::::r 
+           a::::a  i::::irr::::::rrrrr::::::r
+    aaaaaaa:::::a  i::::i r:::::r     r:::::r
+  aa::::::::::::a  i::::i r:::::r     rrrrrrr
+ a::::aaaa::::::a  i::::i r:::::r            
+a::::a    a:::::a  i::::i r:::::r            
+a::::a    a:::::a i::::::ir:::::r            
+a:::::aaaa::::::a i::::::ir:::::r            
+ a::::::::::aa:::ai::::::ir:::::r            
+  aaaaaaaaaa  aaaaiiiiiiiirrrrrrr            
+                                             
+                                                                                                                                                                            
                                                                                                                                                     
                                                                                                                                                     
                                                                                                                                                     
