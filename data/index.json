@@ -52,6 +52,42 @@
     "createdTime": "2020-07-10T15:32:50.000Z"
   },
   {
+    "id": "recN5m1YE051SJqOd",
+    "fields": {
+      "Beneficiaire": [
+        "recFI7Y7DRBI9eHOw"
+      ],
+      "Client": [
+        "recmAiIPceLqqg7G0"
+      ],
+      "Description": "zrzaf\n",
+      "Index": 10,
+      "CotAVD": 0,
+      "CotAVP": 0,
+      "CotCSG": 0,
+      "CotCRDS": 0,
+      "CotCFP": 0,
+      "TotalCot": 0,
+      "CotCipav": 0,
+      "TotalDuAuteur": 0,
+      "createdDate": "09/09/2020",
+      "Date": {
+        "error": "#ERROR!"
+      },
+      "NumeroDeFacture": "F2020-09-0010",
+      "OldCotCCS": 0,
+      "OldCotCFP": 0,
+      "CotUrsaffAncienneNomAgessa": 0,
+      "CotAutoLiberatoire": 0,
+      "CotAutoCPF": 0,
+      "CotAutoSociales": 0,
+      "TotalCotAuto": 0,
+      "TotalDuUrssaf": 0,
+      "NetAutoInformatif": 0
+    },
+    "createdTime": "2020-09-09T20:36:36.000Z"
+  },
+  {
     "id": "recX50oU2wStPUa7i",
     "fields": {
       "Beneficiaire": [

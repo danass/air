@@ -5,12 +5,11 @@ var express = require('express');
 var router = express.Router();
 const fs = require('fs')
 
+let params = {}
 
 let results = []
 
-let params = {}
-
-function axGet(baseURL, headers, name, write = true) {
+function airGet(baseURL, headers, name, write = true) {
      //Axios get method, for Airtable records 
     return axios({
       baseURL: baseURL,
@@ -32,7 +31,7 @@ function axGet(baseURL, headers, name, write = true) {
   })
   }
   
-  function axRoute(router, headers, view, title) { 
+  function airRoute(router, view, title) { 
       router.get('/', function(req, res, next) {
     let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + view + '.json'))
           res.render(view, { 
@@ -42,11 +41,11 @@ function axGet(baseURL, headers, name, write = true) {
       });
   }
   
-  function axRouteId(router, headers, view, title) { router.get('/:id', function(req, res, next) {
+  function airRouteId(router, view, title) { router.get('/:id', function(req, res, next) {
       let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + view + '.json'))
       for (let result of results) {
           if (req.params.id === result.id) {
-          res.render(view + 'id', { 
+          res.render(view + '_id', { 
               title: title, 
               result: result,
               results: results
@@ -56,27 +55,27 @@ function axGet(baseURL, headers, name, write = true) {
   }
   
   
-  function axRealtimeUpdateJson(baseURL, headers, view, sleeptime = 20000) {
+  function airRealtimeUpdateJson(baseURL, headers, view, sleeptime = 20000) {
   setInterval(function data() {
-      axGet(baseURL, headers, view).then(results => {return results}) 
+      airGet(baseURL, headers, view).then(results => {return results}) 
       return data;
        }(), sleeptime);    
   }
 
   
-function branch(router, headers, base, nomid, titlehtml, id = false) {
-    axRealtimeUpdateJson(base, headers, nomid)
-    axRoute(router, headers, nomid, titlehtml) //arg1: view, arg2: title(html header)
+function air(router, headers, base, nomid, titlehtml, id = false) {
+    airRealtimeUpdateJson(base, headers, nomid)
+    airRoute(router, nomid, titlehtml) //arg1: view, arg2: title(html header)
     if (id === true ) {
-        axRouteId(router, headers, nomid, titlehtml)
+        airRouteId(router, nomid, titlehtml)
     }
     }
 
     
-  global.axRealtimeUpdateJson = axRealtimeUpdateJson
-  global.axRoute = axRoute
-  global.axRouteId = axRouteId
-  global.axGet = axGet
-  global.branch = branch
+  global.airRealtimeUpdateJson = airRealtimeUpdateJson
+  global.airRoute = airRoute
+  global.airRouteId = airRouteId
+  global.airGet = airGet
+  global.air = air
   
   module.exports = router
