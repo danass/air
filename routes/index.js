@@ -7,6 +7,6 @@ let tableName = "Factures"
 let headers = { authorization: "Bearer " + config.compta.auth_key }
 let base = "https://api.airtable.com/v0/" + config.compta.base_name + "/" + tableName + "/"
 
-air(router, headers, base, "index", "La page est nouvelle", true)
+air(router, headers, base, "index", "La padj est nouvelle", true)e
 
 module.exports = router
