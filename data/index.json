@@ -19,34 +19,34 @@
       ],
       "Description": "Consulting en conception de formation",
       "Index": 4,
+      "NumeroDeFacture": "F2020-07-004",
       "CotAVD": 0,
       "CotAVP": 0,
       "CotCSG": 0,
       "CotCRDS": 0,
       "CotCFP": 0,
-      "TotalCot": 0,
-      "CotCipav": 0,
-      "TotalDuAuteur": 10000,
-      "createdDate": "10/07/2020",
-      "Date": "15/10/2020",
-      "NumeroDeFacture": "F2020-07-004",
       "OldCotCCS": 0,
       "OldCotCFP": 0,
+      "TotalCot": 0,
       "CotUrsaffAncienneNomAgessa": 0,
-      "CotAutoLiberatoireTaux": [
-        2.2
-      ],
-      "CotAutoLiberatoire": 220.00000000000003,
-      "CotAutoCPFtaux": [
-        0.1
-      ],
-      "CotAutoCPF": 10,
+      "TotalDuAuteur": 10000,
+      "TotalDuUrssaf": 2630,
+      "createdDate": "10/07/2020",
+      "Date": "15/10/2020",
+      "CotCipav": 0,
       "CotAutoSocialesTaux": [
         24
       ],
+      "CotAutoLiberatoireTaux": [
+        2.2
+      ],
+      "CotAutoCPFtaux": [
+        0.1
+      ],
+      "CotAutoLiberatoire": 220.00000000000003,
+      "CotAutoCPF": 10,
       "CotAutoSociales": 2400,
       "TotalCotAuto": 2630,
-      "TotalDuUrssaf": 2630,
       "NetAutoInformatif": 7370
     },
     "createdTime": "2020-07-10T15:32:50.000Z"
@@ -62,27 +62,27 @@
       ],
       "Description": "zrzaf\n",
       "Index": 10,
+      "NumeroDeFacture": "F2020-09-0010",
       "CotAVD": 0,
       "CotAVP": 0,
       "CotCSG": 0,
       "CotCRDS": 0,
       "CotCFP": 0,
+      "OldCotCCS": 0,
+      "OldCotCFP": 0,
       "TotalCot": 0,
-      "CotCipav": 0,
+      "CotUrsaffAncienneNomAgessa": 0,
       "TotalDuAuteur": 0,
+      "TotalDuUrssaf": 0,
       "createdDate": "09/09/2020",
       "Date": {
         "error": "#ERROR!"
       },
-      "NumeroDeFacture": "F2020-09-0010",
-      "OldCotCCS": 0,
-      "OldCotCFP": 0,
-      "CotUrsaffAncienneNomAgessa": 0,
+      "CotCipav": 0,
       "CotAutoLiberatoire": 0,
       "CotAutoCPF": 0,
       "CotAutoSociales": 0,
       "TotalCotAuto": 0,
-      "TotalDuUrssaf": 0,
       "NetAutoInformatif": 0
     },
     "createdTime": "2020-09-09T20:36:36.000Z"
@@ -107,46 +107,46 @@
       ],
       "Description": "Conseil en pédagogie",
       "Index": 1,
+      "NumeroDeFacture": "F2020-07-001",
+      "CotAVD": 0,
       "CotAVDTaux": [
         0
       ],
-      "CotAVD": 0,
+      "CotAVP": 30.75,
       "CotAVPTaux": [
         6.15
       ],
-      "CotAVP": 30.75,
+      "CotCSG": 45.195,
+      "CotCRDS": 2.45625,
+      "CotCFP": 1.75,
+      "OldCotCCS": 0,
       "CotCSGTaux": [
         9.2
       ],
-      "CotCSG": 45.195,
       "CotCRDSTaux": [
         0.5
       ],
-      "CotCRDS": 2.45625,
       "CotCFPTaux": [
         0.35
       ],
-      "CotCFP": 1.75,
-      "TotalCot": 80.15124999999999,
-      "CotCipav": 0,
-      "TotalDuAuteur": 419.84875,
-      "createdDate": "07/07/2020",
-      "Date": "10/03/2020",
-      "NumeroDeFacture": "F2020-07-001",
       "OldCotCCSTaux": [
         0
       ],
-      "OldCotCCS": 0,
       "OldCotCFPTaux": [
         0
       ],
       "OldCotCFP": 0,
+      "TotalCot": 80.15124999999999,
       "CotUrsaffAncienneNomAgessa": 0,
+      "TotalDuAuteur": 419.84875,
+      "TotalDuUrssaf": 80.15124999999999,
+      "createdDate": "07/07/2020",
+      "Date": "10/03/2020",
+      "CotCipav": 0,
       "CotAutoLiberatoire": 0,
       "CotAutoCPF": 0,
       "CotAutoSociales": 0,
       "TotalCotAuto": 0,
-      "TotalDuUrssaf": 80.15124999999999,
       "NetAutoInformatif": 419.84875
     },
     "createdTime": "2020-07-07T19:37:34.000Z"
@@ -171,34 +171,34 @@
       ],
       "Description": "Consulting IA",
       "Index": 2,
+      "NumeroDeFacture": "F2020-07-002",
       "CotAVD": 0,
       "CotAVP": 0,
       "CotCSG": 0,
       "CotCRDS": 0,
       "CotCFP": 0,
-      "TotalCot": 0,
-      "CotCipav": 0,
-      "TotalDuAuteur": 200,
-      "createdDate": "08/07/2020",
-      "Date": "08/07/2020",
-      "NumeroDeFacture": "F2020-07-002",
       "OldCotCCS": 0,
       "OldCotCFP": 0,
+      "TotalCot": 0,
       "CotUrsaffAncienneNomAgessa": 0,
-      "CotAutoLiberatoireTaux": [
-        2.2
-      ],
-      "CotAutoLiberatoire": 4.4,
-      "CotAutoCPFtaux": [
-        0.1
-      ],
-      "CotAutoCPF": 0.2,
+      "TotalDuAuteur": 200,
+      "TotalDuUrssaf": 52.6,
+      "createdDate": "08/07/2020",
+      "Date": "08/07/2020",
+      "CotCipav": 0,
       "CotAutoSocialesTaux": [
         24
       ],
+      "CotAutoLiberatoireTaux": [
+        2.2
+      ],
+      "CotAutoCPFtaux": [
+        0.1
+      ],
+      "CotAutoLiberatoire": 4.4,
+      "CotAutoCPF": 0.2,
       "CotAutoSociales": 48,
       "TotalCotAuto": 52.6,
-      "TotalDuUrssaf": 52.6,
       "NetAutoInformatif": 147.4
     },
     "createdTime": "2020-07-08T16:39:16.000Z"

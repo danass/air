@@ -1,12 +1,15 @@
 const config = require('./../config')
 var express = require('express');
-var router = express.Router();
 require('../air')
 
-let tableName = "Factures" 
-let headers = { authorization: "Bearer " + config.compta.auth_key }
-let base = "https://api.airtable.com/v0/" + config.compta.base_name + "/" + tableName + "/"
+let airConfig = {
+    router: express.Router(),
+    pugViewName: "index",
+    htmlTitle: "Nouvelle page",
+    _id: true,
+    writeJson: true
+} 
 
-air(router, headers, base, "index", "La padj est nouvelle", true)e
+air(Air(config.compta, airConfig))
 
-module.exports = router
+module.exports = airConfig.router
