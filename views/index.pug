@@ -1,9 +1,0 @@
-extends layout
-
-block content
-  h1= title
-  p Welcome to #{title}
-  div
-    for result in results
-      li()
-        a(href=result.id)= result.fields.NumeroDeFacture

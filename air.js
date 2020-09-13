@@ -7,18 +7,24 @@ const fs = require('fs')
 
 let params = {}
 
-let results = []
+let db = {
+    airtable: []
+}
 
 
-function Air(config, localArgs)  {
+function Air(localArgs, index = 0)  {
     let airArgs = {
-        headers: { authorization: "Bearer " + config.auth_key },
-        baseUrl: "https://api.airtable.com/v0/" + config.base_name + "/" + config.tableNames[0] + "/",
+        headers: { authorization: "Bearer " + localArgs.base.auth_key },
+        baseUrl: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + localArgs.base.tableNames[index] + "/",
         router: localArgs.router,
-        pugViewName: localArgs.pugViewName,
-        htmlTitle: localArgs.htmlTitle,
+        tableName: localArgs.base.tableNames[index],
+        allTables: localArgs.base.tableNames,
+        pugViewName: localArgs.base.tableNames[index],
         _id: localArgs._id,
         writeJson: localArgs.writeJson,
+        dbWrite: localArgs.dbWrite,
+        init: localArgs.init,
+        refreshTime: localArgs.refreshTime
     }
     return airArgs
 }
@@ -30,54 +36,61 @@ function airGet(Air) {
      headers: Air.headers,
      params: params
  }).then(axios => {
-     if(Air.writeJson === true) {
-       //console.log(process.cwd() + '\\data\\' + name + ".json")
-       fs.writeFile(process.cwd() + '\\data\\' + Air.pugViewName + ".json", JSON.stringify(axios.data.records, null, 2), (err) => { 
+     if(Air.writeJson === true & Air.init == false) {
+         Air.init = true
+         fs.writeFile(process.cwd() + '\\data\\' + Air.pugViewName + ".json", JSON.stringify(axios.data.records, null, 2), (err) => { 
          if (err) console.log(err); 
          else { 
-             //console.log("File written successfully\n"); 
+             console.log("File written successfully\n"); 
          } 
        })
      }
+     if (Air.dbWrite == true) {
+        db.airtable[Air.pugViewName] = {
+           [Air.pugViewName]: axios.data.records
+       }
+
+     }
      return axios.data.records
  }).catch(e => {
-     console.log(e)
+     console.error(e)
  })
  }
 
   
 function airRoute(Air) { 
-    Air.router.get('/', function(req, res, next) {
-  let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + Air.pugViewName + '.json'))
-        res.render(Air.pugViewName, { 
-            title: Air.htmlTitle, 
-            results: results
+    Air.router.get('/' + Air.tableName, function(req, res, next) {
+    //let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + Air.pugViewName + '.json'))
+    let dbresults = db.airtable[Air.tableName]
+        res.render(Air.tableName, { 
+            path: Air.tableName + '/',
+            results: dbresults[Air.tableName]
          });
     });
 }
 
-function airRouteId(Air) { Air.router.get('/:id', function(req, res, next) {
-    let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + Air.pugViewName + '.json'))
-    for (let result of results) {
+function airRouteId(Air) { Air.router.get('/' + Air.tableName + '/:id', function(req, res, next) {
+    //let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + Air.pugViewName + '.json'))
+    let dbresults = db.airtable[Air.tableName]
+    for (let result of dbresults[Air.tableName]) {
         if (req.params.id === result.id) {
-        res.render(Air.pugViewName + '_id', { 
-            title: Air.htmlTitle, 
+        res.render(Air.tableName + '_id', { 
+            path: Air.tableName + '/',
             result: result,
-            results: results
+            results: dbresults[Air.tableName]
          });
         }}
     });
 }
-
   
-function airRealtimeUpdateJson(Air, sleeptime = 20000) {
+function airRealtimeUpdateJson(Air, sleeptime = Air.refreshTime) {
     setInterval(function data() {
         airGet(Air).then(results => {return results}) 
         return data;
-         }(), sleeptime);    
+         }(), Air.refreshTime);    
     }
 
-function air(Air) {
+function branch(Air) {
     airRealtimeUpdateJson(Air)
     airRoute(Air) //arg1: view, arg2: title(html header)
     if (Air._id === true ) {
@@ -85,11 +98,19 @@ function air(Air) {
     }
     }
 
-    
+    function airAll(localconfig) {
+        for (index of localconfig.base.tableNames) {
+        branch(Air(localconfig, localconfig.base.tableNames.indexOf(index)))
+        }
+    }
+
   global.airRealtimeUpdateJson = airRealtimeUpdateJson
   global.airRoute = airRoute
   global.airRouteId = airRouteId
   global.airGet = airGet
-  global.air = air
+  global.branch = branch
   global.Air = Air
+  global.airAll = airAll
+  global.db = db
 //   module.exports = router
+  module.exports = db

@@ -1,0 +1,57 @@
+[
+  {
+    "id": "recANi60Ol8MUdGk4",
+    "fields": {
+      "Nom": "Ars Longa",
+      "CodePostal": "75011 Paris",
+      "Adresse": "42 rue de la Folie Méricourt ",
+      "Taux horaire brut": 35.7,
+      "FacturesClient": [
+        "recX50oU2wStPUa7i"
+      ],
+      "Siret": "421 002 148 00052"
+    },
+    "createdTime": "2020-07-07T18:04:23.000Z"
+  },
+  {
+    "id": "recmAiIPceLqqg7G0",
+    "fields": {
+      "Nom": "ADVANCED CREATIONS SUPPLIES",
+      "CodePostal": "75011 Paris",
+      "Adresse": "68 Rue de la Folie Méricourt",
+      "Taux horaire brut": 50,
+      "FacturesClient": [
+        "recyJsgQH2KWpTkTa",
+        "recN5m1YE051SJqOd"
+      ],
+      "Siret": "479 644 072 00023"
+    },
+    "createdTime": "2020-07-08T16:39:33.000Z"
+  },
+  {
+    "id": "recpFJUXdBSydNwwY",
+    "fields": {
+      "Nom": "VILLETTE MAKERZ BY WOMA",
+      "CodePostal": " 75019 PARIS",
+      "Adresse": "\t211 AV JEAN JAURES",
+      "Taux horaire brut": 35.7,
+      "Heures": [
+        "recxLg9DjBQoMBv1Z",
+        "recNABhPAHMLJeUyH",
+        "recpSXBNgpgHJhbFu",
+        "recVYqr7BqvItbaG6",
+        "reclbazLs68tMSpID",
+        "recGBvSwXmiBAtwNT",
+        "recMfKDDaBPN6pX8g",
+        "recteMjeyCV0Xrq5Y",
+        "recU526QxHO4T8Fim",
+        "recepv9W3w8TcAP96"
+      ],
+      "FacturesClient": [
+        "recMwHb7mNSGssFKp"
+      ],
+      "Siret": "822 659 629 00015"
+    },
+    "createdTime": "2020-07-10T15:31:17.000Z"
+  }
+]
