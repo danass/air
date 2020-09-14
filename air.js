@@ -24,7 +24,7 @@ function Air(localArgs, index = 0)  {
         writeJson: localArgs.writeJson,
         dbWrite: localArgs.dbWrite,
         init: localArgs.init,
-        refreshTime: localArgs.refreshTime
+        refreshTime: localArgs.refreshTime,
     }
     return airArgs
 }
@@ -57,7 +57,29 @@ function airGet(Air) {
  })
  }
 
+
+ function airArgs(localArgs) {
+     let airPostArgs = {
+        headers: { 'Authorization': "Bearer " + localArgs.base.auth_key, 
+                    'Content-Type': "application/json"},
+        baseUrl: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + localArgs.baseName + "/",
+        router: localArgs.router,
+        tableName: localArgs.baseName,
+        allTables: localArgs.base.tableNames,
+        data: localArgs.data
+     }
+     return airPostArgs
+ }
   
+function airPost(Air) {
+    console.log(Air.headers)
+    return axios({
+        method: 'post',
+        url: Air.baseUrl,
+        headers: Air.headers,
+        data : Air.data
+    }).catch(e => console.error(e))
+}
 function airRoute(Air) { 
     Air.router.get('/' + Air.tableName, function(req, res, next) {
     //let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + Air.pugViewName + '.json'))
@@ -112,5 +134,7 @@ function branch(Air) {
   global.Air = Air
   global.airAll = airAll
   global.db = db
+  global.airPost = airPost
+  global.airArgs = airArgs
 //   module.exports = router
   module.exports = db
