@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1= "salut"
+  p Welcome to conversatrion House
+  div
+    form(method="POST" action="/send")
+      input(type="text" name="message")
+      input(type="submit")

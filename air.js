@@ -1,21 +1,22 @@
 const axios = require('axios')
-const config = require('./config')
+const {config, _config} = require('./config')
+const {db} = require('./scheme')
 const _ = require("lodash")
 var express = require('express');
-// var router = express.Router();
 const fs = require('fs')
 
 let params = {}
 
-let db = {
-    airtable: []
-}
+db.airtable = []
+
 
 
 function Air(localArgs, index = 0)  {
     let airArgs = {
-        headers: { authorization: "Bearer " + localArgs.base.auth_key },
+        headers: { 'Authorization': "Bearer " + localArgs.base.auth_key, 
+        'Content-Type': "application/json"},
         baseUrl: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + localArgs.base.tableNames[index] + "/",
+        baseUrlPost: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + localArgs.baseName + "/",
         router: localArgs.router,
         tableName: localArgs.base.tableNames[index],
         allTables: localArgs.base.tableNames,
@@ -25,6 +26,8 @@ function Air(localArgs, index = 0)  {
         dbWrite: localArgs.dbWrite,
         init: localArgs.init,
         refreshTime: localArgs.refreshTime,
+        data: localArgs.data,
+        scheme: db.scheme[Object.keys(db.scheme).find(el => el == 'chat')],
     }
     return airArgs
 }
@@ -57,29 +60,16 @@ function airGet(Air) {
  })
  }
 
-
- function airArgs(localArgs) {
-     let airPostArgs = {
-        headers: { 'Authorization': "Bearer " + localArgs.base.auth_key, 
-                    'Content-Type': "application/json"},
-        baseUrl: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + localArgs.baseName + "/",
-        router: localArgs.router,
-        tableName: localArgs.baseName,
-        allTables: localArgs.base.tableNames,
-        data: localArgs.data
-     }
-     return airPostArgs
- }
   
 function airPost(Air) {
-    console.log(Air.headers)
     return axios({
         method: 'post',
-        url: Air.baseUrl,
+        url: Air.baseUrlPost,
         headers: Air.headers,
         data : Air.data
     }).catch(e => console.error(e))
 }
+
 function airRoute(Air) { 
     Air.router.get('/' + Air.tableName, function(req, res, next) {
     //let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + Air.pugViewName + '.json'))
@@ -89,6 +79,18 @@ function airRoute(Air) {
             results: dbresults[Air.tableName]
          });
     });
+}
+
+function routeChat(Air) {
+    Air.router.post('/send', (req, res, next) => {
+        //let message = req.body.message
+        // console.log(req.body.message)
+        Air.data.records[0].fields.message = req.body.message
+        // console.log(Air.data.records)
+        airPost(Air)
+       res.send("ok")
+
+      })
 }
 
 function airRouteId(Air) { Air.router.get('/' + Air.tableName + '/:id', function(req, res, next) {
@@ -126,6 +128,18 @@ function branch(Air) {
         }
     }
 
+function monitorDb(timeInterval) {
+        setInterval(function data() {
+        console.log(db.airtable)
+        return data;
+         }(), timeInterval);    
+}
+
+function getConf(nom) {
+    return  _.find(_config, function(confObj) {return confObj.name == nom} )
+  }
+
+
   global.airRealtimeUpdateJson = airRealtimeUpdateJson
   global.airRoute = airRoute
   global.airRouteId = airRouteId
@@ -135,6 +149,10 @@ function branch(Air) {
   global.airAll = airAll
   global.db = db
   global.airPost = airPost
-  global.airArgs = airArgs
-//   module.exports = router
-  module.exports = db
+  global.routeChat = routeChat
+
+  module.exports = {
+      db:db,
+    getConf:getConf
+}
+

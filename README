@@ -36,26 +36,18 @@ a:::::aaaa::::::a i::::::ir:::::r
                                                                                                                                                     
 Setup config.js with your api keys,
 
-Setup headers with config.js name.
+let conf = {
+    router: express.Router(),
+   // pugViewName: "index",
+    _id: true,
+    writeJson: true,
+    base: config.compta,
+    dbWrite: true,
+    init: false, 
+    refreshTime: 3333,
+} 
 
-Setup your table name
-#in index.js
-
-let tableName = "the name of your table" 
-                                                                              
-then connect everything: 
-
-branch(router, headers, base, "index", "the page <title>", 0)
-
-#router, must be kept as is
-#hedears, modify config.'name' header.
-#base is the url containing tableName
-#"index" is a string that refer to the name of your views in pug.
-#"the page title", is your html title
-#last arg is by default false (0). can be set to true to activate "viewname_id.pug"
-
-"index" represent the name of your pug view.
-create index.pug to retrieve the results
+airAll(conf)
 
 
 indexid.pug will also retrieve the result of results when branch(,,,,,) 5th arg set to 1.

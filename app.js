@@ -5,20 +5,24 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var index = require('./routes/index');
-
+var chat = require('./routes/chat');
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
+
 app.use(logger('dev'));
+
 app.use(express.json());
-//app.use(express.urlencoded({ extended: falses }));
+app.use(express.urlencoded({ extended: true }));
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/', chat);
 
 
 // catch 404 and forward to error handler
