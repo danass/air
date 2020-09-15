@@ -1,14 +1,14 @@
-const {config} = require('./../config')
+// const {config} = require('./../config')
 var express = require('express');
-require('../air')
-let db = require('../air')
+// require('../air')
+let {db, getConf} = require('../air')
 
 
 let airConf = {
     router: express.Router(),
     _id: true,
     writeJson: true,
-    base: config.compta,
+    base: getConf('compta'),
     dbWrite: true,
     init: false, 
     refreshTime: 3333,

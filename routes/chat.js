@@ -1,4 +1,4 @@
-const {config, _config} = require('./../config')
+const {config} = require('./../config')
 var express = require('express');
 // require('../air')
 let  {db, getConf} = require('../air')
@@ -6,7 +6,7 @@ const _ = require('lodash')
 
 let airConf = {
     router: express.Router(),
-    base: config.chat,
+    base: getConf('chat'),
     tablePosition: 1,
     tablePositionPost: 1,
     refreshTime: 2500,

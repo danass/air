@@ -1,5 +1,5 @@
 const axios = require('axios')
-const {config, _config} = require('./config')
+const {config} = require('./config')
 const {db} = require('./scheme')
 const _ = require("lodash")
 var express = require('express');
@@ -127,7 +127,7 @@ function monitorDb(timeInterval) {
 }
 
 function getConf(nom) {
-    return  _.find(_config, function(confObj) {return confObj.name == nom} )
+    return  _.find(config, function(confObj) {return confObj.name == nom} )
   }
 
 

@@ -32,23 +32,20 @@ a:::::aaaa::::::a i::::::ir:::::r
                                              
                                                                                                                                                                             
                                                                                                                                                     
-                                                                                                                                                    
+you can retrieve (GET) and create entries (POST) from airtable.                                                                                                                                    
                                                                                                                                                     
 Setup config.js with your api keys,
 
-let conf = {
+let airConf = {
     router: express.Router(),
-   // pugViewName: "index",
     _id: true,
     writeJson: true,
     base: config.compta,
     dbWrite: true,
     init: false, 
     refreshTime: 3333,
+    tablePosition: 0,
 } 
 
-airAll(conf)
+airIt(airConf)
 
-
-indexid.pug will also retrieve the result of results when branch(,,,,,) 5th arg set to 1.
-branch(router, headers, base, "index", "the page <title>", 1)
