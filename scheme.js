@@ -1,5 +1,5 @@
 const puppeteer = require('puppeteer');
-const {_config, config} = require('./config')
+const {config} = require('./config')
 const fs = require('fs');
 
 
@@ -83,7 +83,7 @@ function getSchemeLocal(conf) {
 const  writeScheme = async _ => {
     console.log("start")
     
-    _config.map(async res => {
+    config.map(async res => {
         return await listTables(res)
     })
     console.log("finish")
