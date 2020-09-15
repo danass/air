@@ -16,11 +16,9 @@ function Air(localArgs, index = 0)  {
         headers: { 'Authorization': "Bearer " + localArgs.base.auth_key, 
         'Content-Type': "application/json"},
         baseUrl: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)][localArgs.tablePosition] + "/",
-        baseUrlPost: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + localArgs.baseName + "/",
+        baseUrlPost: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)][localArgs.tablePositionPost] + "/",
         router: localArgs.router,
         tableName: db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)][localArgs.tablePosition],
-        allTables: db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)],
-        pugViewName: db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)][localArgs.tablePosition],
         _id: localArgs._id,
         writeJson: localArgs.writeJson,
         dbWrite: localArgs.dbWrite,
@@ -41,7 +39,7 @@ function airGet(Air) {
  }).then(axios => {
      if(Air.writeJson === true & Air.init == false) {
          Air.init = true
-         fs.writeFile(process.cwd() + '\\data\\' + Air.pugViewName + ".json", JSON.stringify(axios.data.records, null, 2), (err) => { 
+         fs.writeFile(process.cwd() + '\\data\\' + Air.tableName + ".json", JSON.stringify(axios.data.records, null, 2), (err) => { 
          if (err) console.log(err); 
          else { 
              console.log("File written successfully\n"); 
@@ -49,8 +47,8 @@ function airGet(Air) {
        })
      }
      if (Air.dbWrite == true) {
-        db.airtable[Air.pugViewName] = {
-           [Air.pugViewName]: axios.data.records
+        db.airtable[Air.tableName] = {
+           [Air.tableName]: axios.data.records
        }
 
      }
@@ -72,7 +70,6 @@ function airPost(Air) {
 
 function airRoute(Air) { 
     Air.router.get('/' + Air.tableName, function(req, res, next) {
-    //let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + Air.pugViewName + '.json'))
     let dbresults = db.airtable[Air.tableName]
         res.render(Air.tableName, { 
             path: Air.tableName + '/',
@@ -83,10 +80,7 @@ function airRoute(Air) {
 
 function routeChat(Air) {
     Air.router.post('/send', (req, res, next) => {
-        //let message = req.body.message
-        // console.log(req.body.message)
         Air.data.records[0].fields.message = req.body.message
-        // console.log(Air.data.records)
         airPost(Air)
        res.send("ok")
 
@@ -94,7 +88,6 @@ function routeChat(Air) {
 }
 
 function airRouteId(Air) { Air.router.get('/' + Air.tableName + '/:id', function(req, res, next) {
-    //let results = JSON.parse(fs.readFileSync(process.cwd() + '\\data\\' + Air.pugViewName + '.json'))
     let dbresults = db.airtable[Air.tableName]
     for (let result of dbresults[Air.tableName]) {
         if (req.params.id === result.id) {
@@ -122,7 +115,7 @@ function branch(Air) {
     }
     }
 
-    function airAll(localconfig) {
+    function airIt(localconfig) {
         branch(Air(localconfig, localconfig.base.tableName))
     }
 
@@ -144,7 +137,7 @@ function getConf(nom) {
   global.airGet = airGet
   global.branch = branch
   global.Air = Air
-  global.airAll = airAll
+  global.airIt = airIt
   global.db = db
   global.airPost = airPost
   global.routeChat = routeChat

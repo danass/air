@@ -15,7 +15,7 @@ let airConf = {
     tablePosition: 0,
 } 
 
-airAll(airConf)
+airIt(airConf)
 
 
 module.exports = airConf.router

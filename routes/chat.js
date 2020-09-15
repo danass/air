@@ -8,6 +8,7 @@ let airConf = {
     router: express.Router(),
     base: config.chat,
     tablePosition: 1,
+    tablePositionPost: 1,
     refreshTime: 2500,
     data: {
       records: [
@@ -27,7 +28,7 @@ let airConf = {
 //     return _.find(file, function(o) { return o.id == id });
 // }
 
-airAll(airConf)
+airIt(airConf)
 routeChat(Air(airConf))
 
 
