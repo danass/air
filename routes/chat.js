@@ -6,10 +6,9 @@ const _ = require('lodash')
 
 let airConf = {
     router: express.Router(),
-    base: getConf('chat'),
-    allTables: "d",
-    baseName: 'conversation',
-     refreshTime: 2500,
+    base: config.chat,
+    tablePosition: 1,
+    refreshTime: 2500,
     data: {
       records: [
         {
@@ -30,7 +29,8 @@ let airConf = {
 
 airAll(airConf)
 routeChat(Air(airConf))
-// airPost(Air(conf))
+
+
 
 
 module.exports = airConf.router

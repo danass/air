@@ -15,19 +15,19 @@ function Air(localArgs, index = 0)  {
     let airArgs = {
         headers: { 'Authorization': "Bearer " + localArgs.base.auth_key, 
         'Content-Type': "application/json"},
-        baseUrl: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + localArgs.base.tableNames[index] + "/",
+        baseUrl: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)][localArgs.tablePosition] + "/",
         baseUrlPost: "https://api.airtable.com/v0/" + localArgs.base.base_name + "/" + localArgs.baseName + "/",
         router: localArgs.router,
-        tableName: localArgs.base.tableNames[index],
-        allTables: localArgs.base.tableNames,
-        pugViewName: localArgs.base.tableNames[index],
+        tableName: db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)][localArgs.tablePosition],
+        allTables: db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)],
+        pugViewName: db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)][localArgs.tablePosition],
         _id: localArgs._id,
         writeJson: localArgs.writeJson,
         dbWrite: localArgs.dbWrite,
         init: localArgs.init,
         refreshTime: localArgs.refreshTime,
         data: localArgs.data,
-        scheme: db.scheme[Object.keys(db.scheme).find(el => el == 'chat')],
+        scheme: db.scheme[Object.keys(db.scheme).find(el => el == localArgs.base.name)],
     }
     return airArgs
 }
@@ -123,9 +123,7 @@ function branch(Air) {
     }
 
     function airAll(localconfig) {
-        for (index of localconfig.base.tableNames) {
-        branch(Air(localconfig, localconfig.base.tableNames.indexOf(index)))
-        }
+        branch(Air(localconfig, localconfig.base.tableName))
     }
 
 function monitorDb(timeInterval) {
